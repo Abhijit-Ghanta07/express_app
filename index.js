@@ -1,27 +1,22 @@
 // imports
-
 import express from "express";
 import dotenv from "dotenv";
 import "./db/db.js";
-import user from "./models/user.js";
+import DocRouter from "./routes/doctorRoute.js";
+import authRouter from "./routes/authRoute.js";
 const app = express();
 
 // middlewares
 dotenv.config();
 app.use(express.json());
+
 app.use(express.static("public"));
 // middlewares end
 
-// responses
-app.get("/hello", (req, res) => {
-  res.send("hello");
-});
-app.post("/newuser", async (req, res) => {
-  const newUser = new user(req.body);
-  const saveUser = await newUser.save();
-  res.json(saveUser).status(201);
-});
-
+// routes
+app.use("/doctor", DocRouter);
+app.use("/auth", authRouter);
+// routes end
 app.listen(process.env.PORT, () => {
   console.log("app is running");
 });
