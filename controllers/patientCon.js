@@ -16,18 +16,9 @@ function verifyToken(req, res, next) {
   }
 }
 
-function verifyAdmin(req, res, next) {
+function verifyDoctorAndAdmin(req, res, next) {
   verifyToken(req, res, () => {
-    if (req.user.isadmin) {
-      next();
-    } else {
-      res.status(403).json("you are not allowed");
-    }
-  });
-}
-function verifyAuthAndAdmin(req, res, next) {
-  verifyToken(req, res, () => {
-    if (req.user.id === req.params.id || req.user.isadmin) {
+    if (req.user.isdoctor || req.user.isadmin) {
       next();
     } else {
       res.status(403).json("you are not allowed");
@@ -35,4 +26,4 @@ function verifyAuthAndAdmin(req, res, next) {
   });
 }
 
-export { verifyAdmin, verifyAuthAndAdmin };
+export default verifyDoctorAndAdmin;

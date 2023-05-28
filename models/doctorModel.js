@@ -2,23 +2,45 @@ import mongoose from "mongoose";
 
 const doctorSchema = new mongoose.Schema(
   {
-    name: {
+    doctorname: {
       type: String,
       required: true,
     },
     age: Number,
     department: {
-      type: String,
+      type: Array,
       required: true,
     },
     specilist: String,
     address: {
-      type: Object,
+      type: String,
       required: true,
     },
-    phone: Number,
+    phonenumber: {
+      type: Number,
+      unique: true,
+      required: true,
+    },
+    degree: {
+      type: Array,
+    },
+    languages: {
+      type: Array,
+      default: ["bengali,english"],
+    },
+    exp: String,
+    location: String,
     timeTable: {
       type: Object,
+    },
+    payment: {
+      type: Object,
+      required: true,
+      default: { hospital: "free" },
+    },
+    available: {
+      type: String,
+      default: "available",
     },
   },
   {

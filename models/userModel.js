@@ -7,8 +7,8 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    phoneNumber: {
-      type: String,
+    phone: {
+      type: Number,
       required: true,
       unique: true,
     },
@@ -21,7 +21,11 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    isAdmin: {
+    isadmin: {
+      type: Boolean,
+      default: false,
+    },
+    isdoctor: {
       type: Boolean,
       default: false,
     },

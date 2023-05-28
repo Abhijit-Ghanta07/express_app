@@ -43,8 +43,12 @@ router.delete("/remove/:id", async (req, res) => {
   }
 });
 router.get("/allDoc", async (req, res) => {
-  const doctors = await doctor.find();
-  res.json(doctors).status(200);
+  try {
+    const doctors = await doctor.find();
+    res.json(doctors).status(200);
+  } catch (err) {
+    res.json(err).status(500);
+  }
 });
 
 export default router;
