@@ -1,38 +1,38 @@
 import jwt from "jsonwebtoken";
 function verifyToken(req, res, next) {
-  const authHeader = req.headers.authorization;
-  if (authHeader) {
-    const token = authHeader.split(" ")[1];
+  const token = req.cookies.token;
+  if (token) {
+    // const token = authHeader.split(" ")[1];
     jwt.verify(token, process.env.JWT_SEC, (err, user) => {
       if (err) {
-        return res.status(400).json("token is invalid");
+        return res.status(401).json({ message: "token is invalid" });
       } else {
         req.user = user;
         next();
       }
     });
   } else {
-    return res.status(403).json("you are not authticated");
+    return res.status(403).json({ message: "you are not authticated" });
   }
 }
 
-function verifyAdmin(req, res, next) {
+function verifyAuthAndAdmin(req, res, next) {
   verifyToken(req, res, () => {
-    if (req.user.isadmin) {
+    if (req.user.role.includes("admin")) {
       next();
     } else {
-      res.status(403).json("you are not allowed");
+      res.status(403).json({ message: "you are not allowed" });
     }
   });
 }
-function verifyAuthAndAdmin(req, res, next) {
+function verifyAuthAndUser(req, res, next) {
   verifyToken(req, res, () => {
-    if (req.user.id === req.params.id || req.user.isadmin) {
+    if (req.user.id === req.params.id || req.user.role.includes("admin")) {
       next();
     } else {
-      res.status(403).json("you are not allowed");
+      res.status(403).json({ message: "you are not allowed" });
     }
   });
 }
 
-export { verifyAdmin, verifyAuthAndAdmin };
+export { verifyAuthAndAdmin, verifyAuthAndUser, verifyToken };

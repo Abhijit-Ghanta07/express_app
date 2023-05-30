@@ -33,7 +33,7 @@ const doctorSchema = new mongoose.Schema(
     timeTable: {
       type: Object,
     },
-    payment: {
+    fees: {
       type: Object,
       required: true,
       default: { hospital: "free" },

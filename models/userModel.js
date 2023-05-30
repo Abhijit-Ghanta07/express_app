@@ -21,13 +21,9 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    isadmin: {
-      type: Boolean,
-      default: false,
-    },
-    isdoctor: {
-      type: Boolean,
-      default: false,
+    role: {
+      type: Array,
+      required: true,
     },
   },
   { timestamps: true }

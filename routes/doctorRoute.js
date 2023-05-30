@@ -1,8 +1,9 @@
 import express from "express";
 import doctor from "../models/doctorModel.js";
+import { verifyAuthAndAdmin, verifyAuthAndUser } from "../controllers/auth.js";
 const router = express.Router();
 
-router.get("/getdoc/:id", async (req, res) => {
+router.get("/getdoc/:id", verifyAuthAndUser, async (req, res) => {
   const { id } = req.params;
   try {
     const finddoctor = await doctor.findOne({ _id: id });
@@ -11,7 +12,7 @@ router.get("/getdoc/:id", async (req, res) => {
     res.json(err).status(500);
   }
 });
-router.post("/adddoc", async (req, res) => {
+router.post("/adddoc", verifyAuthAndAdmin, async (req, res) => {
   const newDoctor = new doctor(req.body);
   try {
     const saveDoc = await newDoctor.save();
@@ -20,7 +21,7 @@ router.post("/adddoc", async (req, res) => {
     res.json(err).status(500);
   }
 });
-router.patch("/update/:id", async (req, res) => {
+router.patch("/update/:id", verifyAuthAndAdmin, async (req, res) => {
   const { id } = req.params;
   try {
     const updateDoctor = await doctor.updateOne(
@@ -32,7 +33,7 @@ router.patch("/update/:id", async (req, res) => {
     res.json(err).status(500);
   }
 });
-router.delete("/remove/:id", async (req, res) => {
+router.delete("/remove/:id", verifyAuthAndAdmin, async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -42,7 +43,7 @@ router.delete("/remove/:id", async (req, res) => {
     res.json(err).status(500);
   }
 });
-router.get("/allDoc", async (req, res) => {
+router.get("/allDoc", verifyAuthAndAdmin, async (req, res) => {
   try {
     const doctors = await doctor.find();
     res.json(doctors).status(200);
