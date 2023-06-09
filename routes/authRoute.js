@@ -3,7 +3,6 @@ import user from "../models/userModel.js";
 import { verifyAuthAndAdmin, verifyToken } from "../controllers/auth.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
-import cookieParser from "cookie-parser";
 const router = express.Router();
 function createAccessToken(user) {
   const acceesToken = jwt.sign(

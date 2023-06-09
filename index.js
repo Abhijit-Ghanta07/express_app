@@ -14,7 +14,11 @@ const PORT = process.env.PORT || 8080;
 // middlewares
 dotenv.config();
 app.use(cookieParser());
-app.use(cors());
+app.use(
+  cors({
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(express.static("public"));
 // middlewares end
