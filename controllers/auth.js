@@ -5,7 +5,7 @@ function verifyToken(req, res, next) {
     // const token = authHeader.split(" ")[1];
     jwt.verify(token, process.env.JWT_SEC, (err, user) => {
       if (err) {
-        return res.status(401).json({ message: "token is invalid" });
+        return res.status(403).json({ message: "token is invalid" });
       } else {
         req.user = user;
         next();
@@ -21,7 +21,7 @@ function verifyAuthAndAdmin(req, res, next) {
     if (req.user.role.includes("admin")) {
       next();
     } else {
-      res.status(403).json({ message: "you are not allowed" });
+      res.status(402).json({ message: "you are not allowed" });
     }
   });
 }
@@ -30,7 +30,7 @@ function verifyAuthAndUser(req, res, next) {
     if (req.user.id === req.params.id || req.user.role.includes("admin")) {
       next();
     } else {
-      res.status(403).json({ message: "you are not allowed" });
+      res.status(402).json({ message: "you are not allowed" });
     }
   });
 }
