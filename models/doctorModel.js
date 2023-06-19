@@ -35,7 +35,6 @@ const doctorSchema = new mongoose.Schema(
     },
     fees: {
       type: Object,
-      required: true,
       default: { hospital: "free" },
     },
     available: {
