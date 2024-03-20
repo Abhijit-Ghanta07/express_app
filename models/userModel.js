@@ -1,33 +1,30 @@
-import mongoose from "mongoose";
+import { DataTypes } from "sequelize";
+import DB from "../db/db.js";
+const sql = new DB();
 
-const userSchema = new mongoose.Schema(
-  {
-    username: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    phone: {
-      type: Number,
-      required: true,
-      unique: true,
-    },
-    password: {
-      type: String,
-      required: true,
-    },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    role: {
-      type: Array,
-      required: true,
+const user = sql.sequelize.define("users", {
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    references: "admins",
+    validate: {
+      isEmail: true,
     },
   },
-  { timestamps: true }
-);
+  password: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {
+      len: [4, 6],
+    },
+  },
+  img: {
+    type: DataTypes.STRING,
+    defaultValue: "A",
+  },
+});
 
-const userModel = mongoose.model("user", userSchema);
-export default userModel;
+(async () => {
+  await user.sync();
+})();
+export default user;

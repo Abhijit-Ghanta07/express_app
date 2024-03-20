@@ -1,37 +1,44 @@
-import mongoose from "mongoose";
+import { DataTypes } from "sequelize";
+import DB from "../db/db.js";
+const sql = new DB();
 
-const patientSchema = new mongoose.Schema(
-  {
-    name: {
-      type: String,
-      required: true,
-    },
-    age: Number,
-    phone: {
-      type: Number,
-      required: true,
-    },
-    gender: {
-      type: String,
-      required: true,
-    },
-    address: {
-      type: String,
-      required: true,
-    },
-    referby: String,
-    reports: { type: Array },
-    doctor: String,
-    payementstatus: {
-      type: String,
-      default: "pending",
-    },
+const patient = sql.sequelize.define("patients", {
+  patientId: {
+    type: DataTypes.NUMBER,
+    defaultValue: DataTypes.UUID,
   },
-  {
-    timestamps: true,
-  }
-);
+  patientName: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  age: {
+    type: DataTypes.NUMBER,
+    allowNull: false,
+  },
+  sex: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  mobileNumber: {
+    type: DataTypes.NUMBER,
+    allowNull: false,
+  },
+  guardianName: {
+    type: DataTypes.STRING,
+  },
+  guardianNumber: DataTypes.NUMBER,
+  guardianRelation: DataTypes.STRING,
 
-const patient = mongoose.model("patient", patientSchema);
+  admitDate: {
+    type: DataTypes.DATE,
+    defaultValue: DataTypes.NOW,
+  },
+  releaseDate: {
+    type: DataTypes.DATE,
+  },
+});
 
+(async () => {
+  await patient.sync();
+})();
 export default patient;

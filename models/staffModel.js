@@ -2,21 +2,14 @@ import { DataTypes } from "sequelize";
 import DB from "../db/db.js";
 const sql = new DB();
 
-const doctor = sql.sequelize.define("doctors", {
-  docId: {
+const staff = sql.sequelize.define("staffs", {
+  staffId: {
     type: DataTypes.NUMBER,
     defaultValue: DataTypes.UUID,
   },
-  docName: {
+  staffName: {
     type: DataTypes.STRING,
     allowNull: false,
-  },
-  docEmail: {
-    type: DataTypes.STRING,
-  },
-  password: {
-    type: DataTypes.STRING,
-    defaultValue: "1234",
   },
   mobileNumber: {
     type: DataTypes.NUMBER,
@@ -47,7 +40,6 @@ const doctor = sql.sequelize.define("doctors", {
 });
 
 (async () => {
-  await doctor.sync();
+  await staff.sync();
 })();
-
-export default doctor;
+export default staff;
