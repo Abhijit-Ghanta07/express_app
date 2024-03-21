@@ -13,11 +13,8 @@ class Database {
   });
 
   connect = async () => {
-    try {
-      await this.sequelize.authenticate();
-    } catch (err) {
-      console.error("err in DB Connection");
-    }
+    await this.sequelize.authenticate();
+    console.log("db Contected");
   };
   sync = async () => {
     try {

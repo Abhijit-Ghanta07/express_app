@@ -2,13 +2,21 @@ import winston from "winston";
 
 const { timestamp, json, combine } = winston.format;
 
-const logger = winston.createLogger({
+const infoLogger = winston.createLogger({
   level: "info",
   format: combine(timestamp(), json()),
   transports: [
     new winston.transports.File({
+      filename: "info.log",
+    }),
+  ],
+});
+const errorLogger = winston.createLogger({
+  level: "error",
+  format: combine(timestamp(), json()),
+  transports: [
+    new winston.transports.File({
       filename: "err.log",
-      level: "info",
     }),
   ],
   exceptionHandlers: [
@@ -19,4 +27,13 @@ const logger = winston.createLogger({
   ],
 });
 
-export default logger;
+const httpLogger = winston.createLogger({
+  level: "http",
+  format: combine(timestamp(), json()),
+  transports: [
+    new winston.transports.File({
+      filename: "http.log",
+    }),
+  ],
+});
+export { infoLogger, errorLogger, httpLogger };

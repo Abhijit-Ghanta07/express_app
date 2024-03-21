@@ -1,12 +1,18 @@
 import { DataTypes } from "sequelize";
-import DB from "../db/db.js";
-const sql = new DB();
+import Database from "../db/db.js";
+const DB = new Database();
 
-const user = sql.sequelize.define("users", {
+const user = DB.sequelize.define("users", {
+  userId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    primaryKey: true,
+    autoIncrement: true,
+  },
   email: {
     type: DataTypes.STRING,
     allowNull: false,
-    references: "admins",
+    unique: true,
     validate: {
       isEmail: true,
     },
@@ -14,17 +20,15 @@ const user = sql.sequelize.define("users", {
   password: {
     type: DataTypes.STRING,
     allowNull: false,
-    validate: {
-      len: [4, 6],
-    },
   },
   img: {
     type: DataTypes.STRING,
-    defaultValue: "A",
+    defaultValue: "AB",
   },
 });
 
-(async () => {
-  await user.sync();
-})();
+// (async () => {
+//   await user.sync();
+// })();
+
 export default user;

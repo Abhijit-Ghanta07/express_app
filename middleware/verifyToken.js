@@ -1,14 +1,5 @@
 import jwt from "jsonwebtoken";
 
-function createAccessToken(user) {
-  const acceesToken = jwt.sign({
-    id: user.id,
-    username: user.username,
-    role: user.role,
-  });
-  return acceesToken;
-}
-
 function verifyToken(req, res, next) {
   const token = req.cookies.token;
   if (token) {
