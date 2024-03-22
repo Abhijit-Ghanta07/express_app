@@ -1,7 +1,6 @@
 ## hospital_manage_back
 
----
-
 **Scripts**
-npm run dev
-npm start
+
+**npm run dev**
+**npm start**
