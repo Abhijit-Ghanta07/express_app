@@ -15,3 +15,21 @@
 {"level":"error","message":{"status":"server error","statusCode":500},"timestamp":"2024-03-21T15:46:43.570Z"}
 {"level":"error","message":{"status":"server error","statusCode":500},"timestamp":"2024-03-21T15:49:45.884Z"}
 {"level":"error","message":{"status":"server error","statusCode":500},"timestamp":"2024-03-21T15:51:23.721Z"}
+{"level":"error","message":"failed to connect to DataBase","timestamp":"2024-03-22T03:04:57.780Z"}
+{"level":"error","message":"failed to connect to DataBase","timestamp":"2024-03-22T03:05:05.613Z"}
+{"level":"error","message":"failed to connect to DataBase","timestamp":"2024-03-22T03:07:05.440Z"}
+{"level":"error","message":{"isOperational":true,"status":"failed to do this operation","statusCode":400},"timestamp":"2024-03-22T03:12:09.324Z"}
+{"level":"error","message":{"isOperational":true,"status":"failed to do this operation","statusCode":400},"timestamp":"2024-03-22T03:12:35.796Z"}
+{"level":"error","message":{"isOperational":true,"status":"failed to do this operation","statusCode":400},"timestamp":"2024-03-22T03:12:53.850Z"}
+{"level":"error","message":{"isOperational":true,"status":"failed to do this operation","statusCode":400},"timestamp":"2024-03-22T03:13:20.450Z"}
+{"level":"error","message":{"isOperational":true,"status":"failed to do this operation","statusCode":400},"timestamp":"2024-03-22T03:13:47.756Z"}
+{"level":"error","message":{"isOperational":true,"status":"failed to do this operation","statusCode":400},"timestamp":"2024-03-22T03:13:53.677Z"}
+{"level":"error","message":{"isOperational":true,"status":"failed to do this operation","statusCode":400},"timestamp":"2024-03-22T03:14:03.597Z"}
+{"level":"error","message":{"isOperational":true,"status":"failed to do this operation","statusCode":400},"timestamp":"2024-03-22T03:14:25.896Z"}
+{"level":"error","message":{"isOperational":true,"status":"failed to do this operation","statusCode":400},"timestamp":"2024-03-22T03:14:30.511Z"}
+{"level":"error","message":{"isOperational":true,"status":"failed to do this operation","statusCode":400},"timestamp":"2024-03-22T03:14:36.839Z"}
+{"level":"error","message":{"isOperational":true,"status":"failed to do this operation","statusCode":400},"timestamp":"2024-03-22T03:14:38.169Z"}
+{"level":"error","message":{"isOperational":true,"status":"failed to do this operation","statusCode":400},"timestamp":"2024-03-22T03:14:39.519Z"}
+{"level":"error","message":{"isOperational":true,"status":"failed to do this operation","statusCode":400},"timestamp":"2024-03-22T03:14:40.910Z"}
+{"level":"error","message":{"isOperational":true,"status":"failed to do this operation","statusCode":400},"timestamp":"2024-03-22T03:14:42.181Z"}
+{"level":"error","message":{"isOperational":true,"status":"failed to do this operation","statusCode":400},"timestamp":"2024-03-22T03:14:43.433Z"}

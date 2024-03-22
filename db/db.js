@@ -7,9 +7,11 @@ class Database {
   password = process.env.DBPass;
   host = process.env.DBHost;
   port = process.env.DBPort;
-  sequelize = new Sequelize("hms", this.userName, this.password, {
+  dbName = process.env.DBName;
+  dbDialect = process.env.DBDialect;
+  sequelize = new Sequelize(this.dbName, this.userName, this.password, {
     host: this.host,
-    dialect: "mysql",
+    dialect: this.dbDialect,
   });
 
   connect = async () => {

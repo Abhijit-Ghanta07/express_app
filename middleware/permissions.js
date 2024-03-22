@@ -12,7 +12,7 @@ const verifypermission = (req, res, next) => {
   }
 };
 const adminPermit = (req, res, next) => {
-  req.user = 2;
+  req.user = 3;
   return next();
 };
 

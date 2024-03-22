@@ -2,9 +2,7 @@
 import express from "express";
 import globalErrorHandler from "./utils/globalError.js";
 // routes
-import authRouter from "./routes/authRoute.js";
-import postRouter from "./routes/postRoute.js";
-import userRouter from "./routes/userRoute.js";
+import { authRouter, postRouter, userRouter } from "./routes/route.js";
 import CustomError from "./lib/customError.js";
 const app = express();
 // middlewares
