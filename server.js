@@ -16,8 +16,8 @@ dotenv.config();
 
 const db = new DataBase();
 db.connect().catch((err) => {
-  const serverErr = new ServerError("failed to connect to DataBase", 500);
-  errorLogger.error(serverErr.message);
+  const serverErr = new ServerError("failed to connect to DataBase", 503);
+  errorLogger.error(serverErr.status);
   console.log("Db not Contected");
   process.exit(1);
 });
@@ -40,7 +40,6 @@ const server = app.listen(PORT, () => {
 
 process.on("unhandledRejection", (err) => {
   console.log("unhandle rejection occured");
-  console.log(err);
   server.close(() => {
     process.exit(1);
   });

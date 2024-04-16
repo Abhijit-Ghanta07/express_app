@@ -17,6 +17,7 @@ router.get("/get/:id", asyncWrapper(viewPost));
 //
 // router.get("/user", adminPermit, asyncWrapper(viewUsersPost));
 // create new post
+router.all("*", adminPermit);
 router.post("/new", adminPermit, asyncWrapper(createPost));
 // update a post
 router.patch("/update/:post", adminPermit, asyncWrapper(updatePost));

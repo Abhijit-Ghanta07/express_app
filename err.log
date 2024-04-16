@@ -33,3 +33,5 @@
 {"level":"error","message":{"isOperational":true,"status":"failed to do this operation","statusCode":400},"timestamp":"2024-03-22T03:14:40.910Z"}
 {"level":"error","message":{"isOperational":true,"status":"failed to do this operation","statusCode":400},"timestamp":"2024-03-22T03:14:42.181Z"}
 {"level":"error","message":{"isOperational":true,"status":"failed to do this operation","statusCode":400},"timestamp":"2024-03-22T03:14:43.433Z"}
+{"level":"error","message":"failed to connect to DataBase","timestamp":"2024-03-22T06:27:20.115Z"}
+{"level":"error","message":"failed to connect to DataBase","timestamp":"2024-04-14T02:47:57.683Z"}
